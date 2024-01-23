@@ -16,6 +16,7 @@ def socket_connection(host,port):
         print(f"Connected suceessfully to port {port}.................")
     except socket.error as msg:
         print(msg)
+        sys.exit()
 
 def send_data(filename):
     try:
@@ -25,7 +26,8 @@ def send_data(filename):
         # s.sendall(filename)
     except socket.error as msg:
         print(msg)
-        sys.e
+        sys.exit()
+        
 
 def receive_data(size):
     try:
@@ -34,6 +36,10 @@ def receive_data(size):
        print(buf)
     except socket.error as msg:
         print("the error occured",msg)
+        sys.exit()
+
+
+
 
 # setting the timeout 
 socket.setdefaulttimeout(200)
