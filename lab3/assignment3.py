@@ -2,10 +2,7 @@ import socket
 import argparse 
 import sys
 
-parser=argparse.ArgumentParser(description="Scoket error ex.")
-parser.add_argument('--host',action="store",dest="host",required=False)
-args=parser.parse_args()
-host=args.host
+
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
 
@@ -40,18 +37,28 @@ def receive_data(size):
 
 
 
-
+parser=argparse.ArgumentParser(description="Scoket error ex.")
+parser.add_argument('--host',action="store",dest="host",required=False)
+# parser.add_argument('--port',action="store",dest="port",required=False)
+parser.add_argument('--msg',action="store",dest="msg",required=False)
+args=parser.parse_args()
+host=args.host
+# port=args.port
+msg=args.msg
+port=80
+# print(host)
+# print(port)
+# print(msg)
 # setting the timeout 
 socket.setdefaulttimeout(200)
 
-port=80
 socket_connection(host,port);
 current_time=socket.getdefaulttimeout()
 
 print(current_time)
 
-filename="send a a messsage"
-send_data(filename)
+# msg="send a a messsage"
+send_data(msg)
 
 receive_data(2048)
 
